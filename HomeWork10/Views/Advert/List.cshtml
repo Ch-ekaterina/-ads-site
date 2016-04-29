@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Список объявлений";
+}
+@model HomeWork10.Models.Advert.List.AdvertListModel
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var item in Model.List)
+{
+    <div>
+        <a href="@Url.Action("View", "Advert", new {id = item.Id})">@item.Title</a>
+        @item.AuthorName
+    </div>
+}
+
+@for (int i = 1; i <= (int)Math.Round((double)(Model.Count / 3), MidpointRounding.AwayFromZero) + 1; i++)
+{
+    if (Model.Page == i)
+    {
+        <span>@i</span>
+    }
+    else
+    {
+        <a href="@Url.Action("List", "Advert", new {page = i})">@i</a>
+    }
+}

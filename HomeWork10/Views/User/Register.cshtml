@@ -1,0 +1,28 @@
+﻿@model HomeWork10.Models.User.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<h2>Регистрация</h2>
+
+<form action="@Url.Action("Register", "User")" method="POST">
+    <br/>
+    <label>Логин</label><br />
+    <input type="text" name="login" value="@Model.LoginValue"/>
+    @if (Model.LoginError != null)
+    {
+        <span>@Model.LoginError</span>
+    }
+    <br />
+    <label>Пароль</label><br />
+    <input type="password" name="password"/><br />
+
+    <label>Повторите пароль</label><br />
+    <input type="password" name="passwordRepeat"/><br />
+    @if (Model.PasswordError != null)
+    {
+        <span>@Model.PasswordError</span>
+    }
+    <br />
+   
+   <button type="submit">Зарегестрироваться</button>
+</form>

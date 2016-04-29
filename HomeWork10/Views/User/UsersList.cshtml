@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Список пользователей";
+}
+@model HomeWork10.Models.User.List.UsersListModel
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var item in Model.UsersList)
+{
+    <div>
+        <a href="@Url.Action("View", "User", new {id = item.Id})">@item.Login</a>
+
+    </div>
+}
+
+    @for (int i = 1; i <= (int)Math.Round((double)(Model.Count / 3), MidpointRounding.AwayFromZero) +1; i++)
+    {
+        if (Model.Page == i)
+        {
+            <span>@i</span>
+        }
+        else
+        {
+            <a href="@Url.Action("UsersList", "User", new {page = i})">@i</a>
+        }
+    }

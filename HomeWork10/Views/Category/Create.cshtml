@@ -1,0 +1,21 @@
+﻿@model HomeWork10.Models.Сategory.CreateModel
+@{
+    ViewBag.Title = "Создание категории";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form action="@Url.Action("Create", "Category")" method="POST">
+    <label>Категория</label>
+    <input type="text" name="category" value="@Model.CategoryValue"/>
+    @if (Model.CategoryError != null)
+    {
+        <span>@Model.CategoryError</span>
+    }
+
+    <button id="createFormButton" type="submit">Создать</button>
+</form>
+
+@section Scripts{
+    <script src="~/Scripts/Category/CreateForm.js"></script>
+}

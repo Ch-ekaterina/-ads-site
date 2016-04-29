@@ -1,0 +1,41 @@
+﻿@using HomeWork10.Models.Сategory
+@model HomeWork10.Models.Advert.AdvertViewModel
+@{
+    ViewBag.Title = "Добавление объявления";
+}
+<h2>Добавте объявление</h2>
+<form id="AdvertAddFrom">
+    <label>Выберете категорию</label>
+    @{
+        List<CategoryListModel> list = new List<CategoryListModel>();
+        foreach (var item in Model.CategoryList)
+        {
+            list.Add(new CategoryListModel(){ItemCategory = item.Category});
+        }
+
+    }
+    @using(Html.BeginForm())
+    {@Html.DropDownListFor(x => x.Category, list)}
+    <select id="CategoryId" multiple="multiple" name="CategoryId">
+        @foreach (var item in Model.CategoryList)
+        {
+            <option>@item.Category</option>
+        }
+    </select>
+    <div>
+        <label>Название</label>
+        <input type="text" name="Title" value=""/>
+    </div>
+
+    <div>
+        <label>Описание</label>
+        <input type="text" name="Desсription" />
+    </div>
+
+    <button id="addFormButton" type="button">Добавить объявление</button>
+</form>
+
+@section Scripts{
+     <script src="~/Scripts/Advert/AddForm.js"></script>
+    
+    }

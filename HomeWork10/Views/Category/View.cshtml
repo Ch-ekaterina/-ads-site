@@ -1,0 +1,18 @@
+﻿@using HomeWork10.Models.Advert
+@model HomeWork10.Models.Сategory.CategoryListModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>
+    <h2>Категория объявлений</h2>
+    @Model.CategoryViewModel.Category <br/>
+
+    <h2>Список объявлений</h2>
+    @foreach (AdvertViewModel item in Model.AdvertsList)
+    {
+        <a href="@Url.Action("View", "Advert", new {id = item.Id})">@item.Title</a>
+    <br />
+    }
+</h2>

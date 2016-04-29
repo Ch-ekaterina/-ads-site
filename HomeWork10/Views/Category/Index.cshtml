@@ -1,0 +1,12 @@
+﻿@model HomeWork10.Models.Сategory.CategoryListModel
+
+<h2>Список категорий</h2>
+
+
+    @foreach (var item in Model.List)
+    {
+        <div>
+            <a href="@Url.Action("List", "Category", new {titleCategory = item.Category})">@item.Category</a>
+
+        </div>
+    }
